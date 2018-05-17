@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -16,6 +17,12 @@ import android.widget.Toast;
  */
 
 public class Fragment2 extends Fragment {
+
+    private TextView textViewMoonRise;
+    private TextView textViewMoonSet;
+    private TextView textViewMoonNewFull;
+    private TextView textViewMoonPhase;
+    private TextView textViewMoonAstroDay;
 
     private Button button3;
 
@@ -25,19 +32,15 @@ public class Fragment2 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment2_layout,container,false);
 
+        textViewMoonRise = (TextView)view.findViewById(R.id.textViewMoonRise);
+        textViewMoonSet = (TextView)view.findViewById(R.id.textViewMoonSet);
+        textViewMoonNewFull = (TextView)view.findViewById(R.id.textViewNewFullMoon);
+        textViewMoonPhase = (TextView)view.findViewById(R.id.textViewPhaseMoon);
+        textViewMoonAstroDay = (TextView)view.findViewById(R.id.textViewAstroDay);
+
         button3 = (Button) view.findViewById(R.id.button3);
 
 
-
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Going to layoud 2", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getActivity(), SecondActivity.class);
-                startActivity(intent);
-            }
-        });
         return view;
     }
 }

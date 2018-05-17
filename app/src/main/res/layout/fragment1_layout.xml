@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="sun"
+            type="com.example.sebastian.scastro.Sun"/>
+    </data>
+
+    <RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SunRise Text"
-        android:id="@+id/textTitleSunRise"
+        android:text="@{sun.sunRise}"
+        android:id="@+id/textViewSunRise"
         android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textTitleSunRise"
+        android:layout_below="@+id/textViewSunRise"
         android:text="SunSet text"
-        android:id="@+id/textTitleSunSet"
+        android:id="@+id/textViewSunSet"
         android:layout_marginTop="40dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textTitleSunSet"
-        android:text="Before Rise and Set Sun text"
-        android:id="@+id/textTitleBefore"
+        android:layout_below="@+id/textViewSunSet"
+        android:text="Before Text"
+        android:id="@+id/textViewBefore"
         android:layout_marginTop="40dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textTitleBefore"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/button3"
-        android:text="Menu"/>
+
 
 </RelativeLayout>
+
+</layout>
+
