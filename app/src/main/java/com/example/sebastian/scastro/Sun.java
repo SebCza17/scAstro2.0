@@ -38,7 +38,7 @@ public class Sun extends BaseObservable {
 
         astroCalculator = new AstroCalculator(astroDateTime, location);
 
-        this.sunRise = astroCalculator.getSunInfo().getSunrise().toString();
+        this.sunRise = "SunRise: " + astroCalculator.getSunInfo().getSunrise().toString().split(" ")[1];
         this.sunRiseAzimuth = sunRiseAzimuth;
         this.sunSet = sunSet;
         this.sunSetAzimuth = sunSetAzimuth;

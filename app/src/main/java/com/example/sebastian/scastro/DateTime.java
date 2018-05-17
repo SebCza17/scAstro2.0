@@ -24,6 +24,8 @@ public class DateTime extends BaseObservable {
         calendar = Calendar.getInstance();
         dateTest = df.format(calendar.getTime());
         dateTestTab = dateTest.split("[-: ]");
+
+        dateTime = dateTest;
     }
 
     @Bindable
@@ -33,6 +35,7 @@ public class DateTime extends BaseObservable {
 
     public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
+        notifyPropertyChanged(BR.dateTime);
     }
 
     public SimpleDateFormat getDf() {
@@ -50,6 +53,13 @@ public class DateTime extends BaseObservable {
 
     public String[] getDateTestTab() {
         return dateTestTab;
+    }
+
+    public void refreshTime(){
+        calendar = Calendar.getInstance();
+        dateTest = df.format(calendar.getTime());
+
+        setDateTime(dateTest);
     }
 
 }

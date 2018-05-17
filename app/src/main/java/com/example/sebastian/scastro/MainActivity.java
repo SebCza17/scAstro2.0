@@ -1,16 +1,11 @@
 package com.example.sebastian.scastro;
 
 import android.content.Intent;
-import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewParent;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sebastian.scastro.databinding.ActivityMainBinding;
 
@@ -28,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        activityMainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         activityMainBinding.setDateTime(dateTime);
 
@@ -36,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(viewPager);
+
+        thread.start();
 
     }
 
@@ -52,24 +49,25 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(fragmentNumber);
     }
 
-    public Thread thread = new Thread() {
+    Thread thread = new Thread() {
 
         @Override
         public void run() {
             try {
-                while (!thread.isInterrupted()) {
+                while (!isInterrupted()) {
                     Thread.sleep(1000);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            dateTime.refreshTime();
                         }
                     });
                 }
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
         }
     };
+
 
 
     public void onClickMenu(View view) {
@@ -78,5 +76,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
 
 

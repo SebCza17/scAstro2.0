@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
         android:gravity="bottom"
-        android:text="DateTime text"
+        android:text="@{dateTime.dateTime}"
         app:layout_constraintEnd_toEndOf="@+id/container"
         android:layout_marginRight="8dp" />
 
