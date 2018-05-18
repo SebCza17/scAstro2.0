@@ -16,70 +16,65 @@ import java.util.Calendar;
 
 public class Sun extends BaseObservable {
 
-    private String sunRise;
-    private String sunRiseAzimuth;
-    private String sunSet;
-    private String sunSetAzimuth;
-    private String sunTwilightEvening;
-    private String sunTwilightMorning;
-
-
-    private AstroCalculator astroCalculator;
+    private String sunRiseAndAzimuth;
+    private String sunSetAndAzimuth;
+    private String sunTwilightEveningAndMorning;
 
 
     public Sun() {
 
-        AstroCalculator.Location location = new AstroCalculator.Location( 52, 21);
-        AstroDateTime astroDateTime = new AstroDateTime(
-                Integer.parseInt(MainActivity.dateTime.getDateTestTab()[0]), Integer.parseInt(MainActivity.dateTime.getDateTestTab()[1]),Integer.parseInt(MainActivity.dateTime.getDateTestTab()[2]),
-                Integer.parseInt(MainActivity.dateTime.getDateTestTab()[3]),Integer.parseInt(MainActivity.dateTime.getDateTestTab()[4]),Integer.parseInt(MainActivity.dateTime.getDateTestTab()[5]),
-                2, false);
-
-
-        astroCalculator = new AstroCalculator(astroDateTime, location);
-
-        this.sunRise = "SunRise: " + astroCalculator.getSunInfo().getSunrise().toString().split(" ")[1];
-        this.sunRiseAzimuth = sunRiseAzimuth;
-        this.sunSet = sunSet;
-        this.sunSetAzimuth = sunSetAzimuth;
-        this.sunTwilightEvening = sunTwilightEvening;
-        this.sunTwilightMorning = sunTwilightMorning;
+        this.sunRiseAndAzimuth =
+                " Rise: " + MainActivity.dateTime.astroCalculator.getSunInfo().getSunrise().toString().split(" ")[1] +
+                " Azimuth: " + String.valueOf(MainActivity.dateTime.astroCalculator.getSunInfo().getAzimuthRise()).substring(0,5);
+        this.sunSetAndAzimuth =
+                " Set: " + MainActivity.dateTime.astroCalculator.getSunInfo().getSunset().toString().split(" ")[1] +
+                " Azimuth: " + String.valueOf(MainActivity.dateTime.astroCalculator.getSunInfo().getAzimuthSet()).substring(0,5);
+        this.sunTwilightEveningAndMorning =
+                " Twilight Evening: " + MainActivity.dateTime.astroCalculator.getSunInfo().getTwilightEvening().toString().split(" ")[1] +
+                " Evening: " + MainActivity.dateTime.astroCalculator.getSunInfo().getTwilightMorning().toString().split(" ")[1];
 
 
     }
 
     @Bindable
-    public String getSunRise() {
-        return sunRise;
+    public String getSunRiseAndAzimuth() {
+        return sunRiseAndAzimuth;
     }
 
-    public void setSunRise(String sunRise) {
-        this.sunRise = sunRise;
-        notifyPropertyChanged(BR.sunRise);
+    public void setSunRiseAndAzimuth(String sunRise) {
+        this.sunRiseAndAzimuth = sunRise;
+        notifyPropertyChanged(BR.sunRiseAndAzimuth);
     }
 
-    public String getSunRiseAzimuth() {
-        return sunRiseAzimuth;
+    @Bindable
+    public String getSunSetAndAzimuth() {
+        return sunSetAndAzimuth;
     }
 
-
-    public String getSunSet() {
-        return sunSet;
+    public void setSunSetAndAzimuth(String sunSetAndAzimuth) {
+        this.sunSetAndAzimuth = sunSetAndAzimuth;
+        notifyPropertyChanged(BR.sunSetAndAzimuth);
     }
 
-
-    public String getSunSetAzimuth() {
-        return sunSetAzimuth;
+    @Bindable
+    public String getSunTwilightEveningAndMorning() {
+        return sunTwilightEveningAndMorning;
     }
 
-
-    public String getSunTwilightEvening() {
-        return sunTwilightEvening;
+    public void setSunTwilightEveningAndMorning(String sunTwilightEvening) {
+        this.sunTwilightEveningAndMorning = sunTwilightEvening;
     }
 
-
-    public String getSunTwilightMorning() {
-        return sunTwilightMorning;
+    public void refresh(){
+        setSunRiseAndAzimuth(
+                " Rise: " + MainActivity.dateTime.astroCalculator.getSunInfo().getSunrise().toString().split(" ")[1] +
+                        " Azimuth: " + String.valueOf(MainActivity.dateTime.astroCalculator.getSunInfo().getAzimuthRise()).substring(0,5));
+        setSunSetAndAzimuth(
+                " Set: " + MainActivity.dateTime.astroCalculator.getSunInfo().getSunset().toString().split(" ")[1] +
+                        " Azimuth: " + String.valueOf(MainActivity.dateTime.astroCalculator.getSunInfo().getAzimuthSet()).substring(0,5));
+        setSunTwilightEveningAndMorning(
+                " Twilight Evening: " + MainActivity.dateTime.astroCalculator.getSunInfo().getTwilightEvening().toString().split(" ")[1] +
+                        " Evening: " + MainActivity.dateTime.astroCalculator.getSunInfo().getTwilightMorning().toString().split(" ")[1]);
     }
 
 }

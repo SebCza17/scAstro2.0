@@ -2,6 +2,7 @@ package com.example.sebastian.scastro;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.PersistableBundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,13 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding activityMainBinding;
 
     static DateTime dateTime = new DateTime();
+    static double latitude = 52;
+    static double longitude = 21;
+    static int refreshTime = 2000;
+
+
+    static Sun sun = new Sun();
+    static Moon moon = new Moon();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         thread.start();
-
+        thread2.start();
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -45,21 +53,49 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setViewPager(int fragmentNumber) {
-        viewPager.setCurrentItem(fragmentNumber);
-    }
-
     Thread thread = new Thread() {
+
+        private boolean stopNow = false;
+
+        public void stopNow() {
+            stopNow = true;
+        }
+
 
         @Override
         public void run() {
             try {
-                while (!isInterrupted()) {
+                while (!interrupted() && !stopNow) {
                     Thread.sleep(1000);
+                    if (!stopNow) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dateTime.refreshTime();
+                                System.out.println(moon.getMoonPhase());
+                            }
+                        });
+                    }
+                }
+            } catch (InterruptedException ignored) {
+            }
+        }
+    };
+
+    Thread thread2 = new Thread() {
+
+        @Override
+        public void run() {
+            try {
+                while (!interrupted()) {
+                    Thread.sleep(refreshTime);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            dateTime.refreshTime();
+
+                            dateTime.refreshAllTime();
+                            sun.refresh();
+                            moon.refresh();
                         }
                     });
                 }
@@ -71,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickMenu(View view) {
+
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
     }

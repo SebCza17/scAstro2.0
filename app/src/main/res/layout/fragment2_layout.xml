@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <data>
+
+        <variable
+            name="moon"
+            type="com.example.sebastian.scastro.Moon"/>
+    </data>
+
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MoonRise Text"
+        android:text="@{moon.moonRiseAndSet}"
         android:id="@+id/textViewMoonRise"
         android:layout_marginTop="40dp"/>
 
@@ -14,15 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewMoonRise"
-        android:text="MoonSet text"
-        android:id="@+id/textViewMoonSet"
-        android:layout_marginTop="40dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewMoonSet"
-        android:text="NewFullMoon text"
+        android:text="@{moon.moonNewAndFull}"
         android:id="@+id/textViewNewFullMoon"
         android:layout_marginTop="40dp"/>
 
@@ -30,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewNewFullMoon"
-        android:text="PhaseMoon text"
+        android:text="@{moon.moonPhase}"
         android:id="@+id/textViewPhaseMoon"
         android:layout_marginTop="40dp"/>
 
@@ -38,9 +40,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewPhaseMoon"
-        android:text="AstroDay text"
+        android:text="@{moon.moonDay}"
         android:id="@+id/textViewAstroDay"
         android:layout_marginTop="40dp"/>
 
 
 </RelativeLayout>
+
+</layout>

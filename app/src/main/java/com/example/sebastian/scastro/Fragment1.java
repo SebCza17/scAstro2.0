@@ -28,15 +28,10 @@ import java.util.Date;
 
 public class Fragment1 extends Fragment {
 
-    private TextView textViewSunSet;
-    private TextView textViewSunBefore;
-    private TextView textViewDateTime;
-    private Button button3;
 
 
 
     private Fragment1LayoutBinding fragment1LayoutBinding;
-    Sun sun = new Sun();
 
     @Nullable
     @Override
@@ -47,13 +42,7 @@ public class Fragment1 extends Fragment {
 
         View view = fragment1LayoutBinding.getRoot();
 
-        fragment1LayoutBinding.setSun(sun);
-
-        textViewSunSet = (TextView) view.findViewById(R.id.textViewSunSet);
-        textViewSunBefore = (TextView) view.findViewById(R.id.textViewBefore);
-        textViewDateTime = (TextView) view.findViewById(R.id.textViewDateTime);
-
-        button3 = (Button) view.findViewById(R.id.button3);
+        fragment1LayoutBinding.setSun(MainActivity.sun);
 
 
 
