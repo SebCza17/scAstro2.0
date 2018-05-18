@@ -35,9 +35,14 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void onClickSave(View view) {
+
         MainActivity.latitude = Double.parseDouble(editTextLa.getText().toString());
         MainActivity.longitude = Double.parseDouble(editTextLo.getText().toString());
-        MainActivity.refreshTime = Integer.parseInt(editTextRe.getText().toString()) * 1000;
+        if(Integer.valueOf(editTextRe.getText().toString()) > 0) {
+            MainActivity.refreshTime = Integer.parseInt(editTextRe.getText().toString()) * 1000;
+        }
+        else
+            MainActivity.refreshTime = 1000;
 
         MainActivity.dateTime.refreshAllTime();
         MainActivity.sun.refresh();

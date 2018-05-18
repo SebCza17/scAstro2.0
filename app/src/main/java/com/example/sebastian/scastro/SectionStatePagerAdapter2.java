@@ -11,12 +11,12 @@ import java.util.List;
  * Created by Sebastian on 16.05.2018.
  */
 
-public class SectionStatePagerAdapter extends FragmentStatePagerAdapter {
+public class SectionStatePagerAdapter2 extends FragmentStatePagerAdapter {
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> fragmentTitleList = new ArrayList<>();
 
 
-    public SectionStatePagerAdapter(FragmentManager fm) {
+    public SectionStatePagerAdapter2(FragmentManager fm) {
         super(fm);
     }
 
@@ -38,7 +38,7 @@ public class SectionStatePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public float getPageWidth(int position) {
         if (position == 0) {
-            return(1.0f);
+            return(0.5f);
         } else {
             return (1.0f);
         }

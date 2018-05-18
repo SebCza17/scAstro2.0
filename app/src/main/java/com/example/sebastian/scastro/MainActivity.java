@@ -7,13 +7,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.sebastian.scastro.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private SectionStatePagerAdapter sectionStatePagerAdapter;
+    private SectionStatePagerAdapter2 sectionStatePagerAdapter2;
     private ViewPager viewPager;
+    private TextView textView;
 
     private ActivityMainBinding activityMainBinding;
 
@@ -26,16 +29,22 @@ public class MainActivity extends AppCompatActivity {
     static Sun sun = new Sun();
     static Moon moon = new Moon();
 
+    static float ktore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textView = (TextView) findViewById(R.id.test);
+
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         activityMainBinding.setDateTime(dateTime);
 
+        if(textView.getText().equals("nieTab"))
         sectionStatePagerAdapter = new SectionStatePagerAdapter(getSupportFragmentManager());
+        else sectionStatePagerAdapter2 = new SectionStatePagerAdapter2(getSupportFragmentManager());
 
         viewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(viewPager);
@@ -45,11 +54,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Fragment1(), "Fragment1");
-        adapter.addFragment(new Fragment2(), "Fragment2");
 
-        viewPager.setAdapter(adapter);
+        if(textView.getText().equals("nieTab")) {
+            SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
+
+            adapter.addFragment(new Fragment1(), "Fragment1");
+            adapter.addFragment(new Fragment2(), "Fragment2");
+
+            viewPager.setAdapter(adapter);
+        }else{
+            SectionStatePagerAdapter2 adapter = new SectionStatePagerAdapter2(getSupportFragmentManager());
+
+            adapter.addFragment(new Fragment1(), "Fragment1");
+            adapter.addFragment(new Fragment2(), "Fragment2");
+
+            viewPager.setAdapter(adapter);
+        }
 
     }
 
