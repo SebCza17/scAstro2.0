@@ -5,92 +5,69 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/layout3" />
-
-    <TextView
         android:id="@+id/textViewTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTest"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="139dp"
         android:text="Temp" />
 
     <TextView
         android:id="@+id/textViewPreasuer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewTemp"
         android:layout_below="@+id/textViewTemp"
-        android:layout_centerHorizontal="true"
-        android:text="Preasure" />
-
-    <TextView
-        android:id="@+id/textViewWind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewPreasuer"
-        android:layout_centerHorizontal="true"
-        android:text="Wind" />
+        android:text="Preasure"
+        android:layout_alignLeft="@+id/textViewTemp" />
 
     <TextView
         android:id="@+id/textViewLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewWind"
-        android:layout_centerHorizontal="true"
-        android:text="Location" />
-
-    <TextView
-        android:id="@+id/textViewGeoLoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewLocation"
-        android:layout_centerHorizontal="true"
-        android:text="GeoLocation" />
-
-    <TextView
-        android:id="@+id/textViewWindDir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewTemp"
         android:layout_below="@+id/textViewPreasuer"
-        android:text="Wind Direction" />
+        android:text="Location"
+        android:layout_alignLeft="@+id/textViewTemp" />
 
     <TextView
-        android:id="@+id/textViewHumi"
+        android:id="@+id/textViewGeoLocLat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewGeoLoc"
-        android:layout_centerHorizontal="true"
-        android:text="Humidity" />
-
-    <TextView
-        android:id="@+id/textViewVisibility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewHumi"
-        android:layout_centerHorizontal="true"
-        android:text="Visibility" />
-
-    <TextView
-        android:id="@+id/textViewTempNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewVisibility"
-        android:layout_centerHorizontal="true"
-        android:text="NextTemp" />
+        android:layout_alignStart="@+id/textViewTemp"
+        android:layout_below="@+id/textViewLocationLong"
+        android:text="GeoLoc"
+        android:layout_alignLeft="@+id/textViewTemp" />
 
     <ImageView
         android:id="@+id/imageViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="178dp"
-        app:srcCompat="@drawable/a44" />
+        app:srcCompat="@drawable/a44"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:id="@+id/textViewLocationLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewTemp"
+        android:layout_below="@+id/textViewLocation"
+        android:text="GeoLong"
+        android:layout_alignLeft="@+id/textViewTemp" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageViewStatus"
+        android:layout_marginStart="60dp"
+        android:text="Description"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="60dp" />
 
 
 </RelativeLayout>
