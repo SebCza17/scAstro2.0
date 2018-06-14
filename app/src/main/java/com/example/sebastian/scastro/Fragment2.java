@@ -15,19 +15,13 @@ import android.widget.Toast;
 
 import com.example.sebastian.scastro.databinding.Fragment2LayoutBinding;
 
-/**
- * Created by Sebastian on 16.05.2018.
- */
-
 public class Fragment2 extends Fragment {
-
 
     Fragment2LayoutBinding fragment2LayoutBinding;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
 
         fragment2LayoutBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment2_layout, container, false);
