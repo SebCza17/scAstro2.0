@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-
-        <variable
-            name="sun"
-            type="com.example.sebastian.scastro.Sun"/>
-    </data>
-
-<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textViewTest"
@@ -17,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
         android:text="@string/layout3" />
 
     <TextView
@@ -65,7 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewPreasuer"
-        android:layout_toEndOf="@+id/textViewGeoLoc"
         android:text="Wind Direction" />
 
     <TextView
@@ -92,7 +83,14 @@
         android:layout_centerHorizontal="true"
         android:text="NextTemp" />
 
+    <ImageView
+        android:id="@+id/imageViewStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="178dp"
+        app:srcCompat="@drawable/a44" />
+
 
 </RelativeLayout>
-
-</layout>

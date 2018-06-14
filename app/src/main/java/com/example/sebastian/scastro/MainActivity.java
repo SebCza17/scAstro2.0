@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.sebastian.scastro.data.Channel;
 import com.example.sebastian.scastro.databinding.ActivityMainBinding;
+import com.example.sebastian.scastro.service.CallbackWeatherService;
+import com.example.sebastian.scastro.service.YahooWaetherSevice;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
     static float ktore;
 
+
+    private TextView textViewTemp;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(viewPager);
+
 
         thread.start();
         thread2.start();
