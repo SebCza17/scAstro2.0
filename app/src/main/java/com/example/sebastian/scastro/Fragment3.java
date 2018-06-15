@@ -1,5 +1,7 @@
 package com.example.sebastian.scastro;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -32,6 +34,8 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
     private YahooWaetherSevice yahooWaetherSevice;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
 
     @Nullable
@@ -49,6 +53,9 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         textViewLat = (TextView)view.findViewById(R.id.textViewGeoLocLat);
         textViewLong = (TextView)view.findViewById(R.id.textViewLocationLong);
 
+        sharedPreferences = getActivity().getSharedPreferences("com.example.sebastian.scastro", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
 
         yahooWaetherSevice = new YahooWaetherSevice(this);
         yahooWaetherSevice.refreshWeather("Lodz, PL");
@@ -62,20 +69,28 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
         Item item = channel.getItem();
         Atmosphere atmosphere = channel.getAtmosphere();
-        int resourceID = getResources().getIdentifier("drawable/a" + item.getCondition().getCode(), null, getActivity().getPackageName());
 
-        //@SuppressWarnings("deprecation")
+
+        editor.putInt("imageViewStatus30", getResources().getIdentifier("drawable/a" + item.getCondition().getCode(), null, getActivity().getPackageName()));
+        editor.putString("textViewTemp30", item.getCondition().getTemp()+" \u00B0"+channel.getUnits().getTemperature());
+        editor.putString("textViewLocation30", yahooWaetherSevice.getLocation());
+        editor.putString("textViewDesc30", item.getCondition().getDescription());
+        editor.putString("textViewPreasure30", atmosphere.getPressure().toString()+" \u33D4");
+        editor.putString("textViewLat30", item.getLat().toString());
+        editor.putString("textViewLong30", item.getLongi().toString());
+        editor.commit();
+
+        int resourceID =  sharedPreferences.getInt("imageViewStatus30", 0);
         Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
-
         imageViewStatus.setImageDrawable(weatherIconDrawable);
 
+        textViewTemp.setText(sharedPreferences.getString("textViewTemp30", ""));
+        textViewLocation.setText(sharedPreferences.getString("textViewLocation30", ""));
+        textViewDesc.setText(sharedPreferences.getString("textViewDesc30", ""));
+        textViewPreasure.setText(sharedPreferences.getString("textViewPreasure30", ""));
+        textViewLat.setText(sharedPreferences.getString("textViewLat30", ""));
+        textViewLong.setText(sharedPreferences.getString("textViewLong30", ""));
 
-        textViewTemp.setText(item.getCondition().getTemp()+" \u00B0"+channel.getUnits().getTemperature());
-        textViewLocation.setText(yahooWaetherSevice.getLocation());
-        textViewDesc.setText(item.getCondition().getDescription());
-        textViewPreasure.setText(atmosphere.getPressure().toString()+" \u33D4");
-        textViewLat.setText(item.getLat().toString());
-        textViewLong.setText(item.getLongi().toString());
 
 
 
@@ -84,6 +99,17 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
     @Override
     public void serviceFailure(Exception exception) {
+
+        int resourceID =  sharedPreferences.getInt("imageViewStatus30", 0);
+        Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
+        imageViewStatus.setImageDrawable(weatherIconDrawable);
+
+        textViewTemp.setText(sharedPreferences.getString("textViewTemp30", ""));
+        textViewLocation.setText(sharedPreferences.getString("textViewLocation30", ""));
+        textViewDesc.setText(sharedPreferences.getString("textViewDesc30", ""));
+        textViewPreasure.setText(sharedPreferences.getString("textViewPreasure30", ""));
+        textViewLat.setText(sharedPreferences.getString("textViewLat30", ""));
+        textViewLong.setText(sharedPreferences.getString("textViewLong30", ""));
         //dialog.hide();
         //Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }

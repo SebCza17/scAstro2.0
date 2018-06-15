@@ -26,8 +26,8 @@ public class YahooWaetherSevice {
         this.callbackWeatherService = callbackWeatherService;
     }
 
-    public void refreshWeather(final String location){
-        this.location = location;
+    public void refreshWeather(final String loc){
+        this.location = loc;
         new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
