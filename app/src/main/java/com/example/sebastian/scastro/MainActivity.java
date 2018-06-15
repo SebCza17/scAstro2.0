@@ -2,17 +2,14 @@ package com.example.sebastian.scastro;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.PersistableBundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sebastian.scastro.data.Channel;
 import com.example.sebastian.scastro.databinding.ActivityMainBinding;
-import com.example.sebastian.scastro.service.CallbackWeatherService;
-import com.example.sebastian.scastro.service.YahooWaetherSevice;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TextView textViewTemp;
+
+
 
 
 
@@ -147,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
     }
+
 
 }
 

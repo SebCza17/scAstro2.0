@@ -2,7 +2,6 @@ package com.example.sebastian.scastro;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,30 +11,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sebastian.scastro.data.Atmosphere;
 import com.example.sebastian.scastro.data.Channel;
 import com.example.sebastian.scastro.data.Item;
-import com.example.sebastian.scastro.databinding.Fragment1LayoutBinding;
 import com.example.sebastian.scastro.service.CallbackWeatherService;
 import com.example.sebastian.scastro.service.YahooWaetherSevice;
 
 public class Fragment3 extends Fragment implements CallbackWeatherService {
 
-    private ImageView imageViewStatus;
-    private TextView textViewTemp;
-    private TextView textViewLocation;
-    private TextView textViewDesc;
-    private TextView textViewPreasure;
-    private TextView textViewLat;
-    private TextView textViewLong;
-
-
     private YahooWaetherSevice yahooWaetherSevice;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    public ImageView imageViewStatus;
+    public TextView textViewTemp3;
+    public TextView textViewLocation;
+    public TextView textViewDesc;
+    public TextView textViewPreasure;
+    public TextView textViewLat;
+    public TextView textViewLong;
+
 
 
     @Nullable
@@ -46,7 +43,7 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         View view = (View) inflater.inflate(R.layout.fragment3_layout,container,false);
 
         imageViewStatus = (ImageView)view.findViewById(R.id.imageViewStatus);
-        textViewTemp = (TextView)view.findViewById(R.id.textViewTemp);
+        textViewTemp3 = (TextView)view.findViewById(R.id.textViewTemp3);
         textViewLocation = (TextView)view.findViewById(R.id.textViewLocation);
         textViewDesc = (TextView)view.findViewById(R.id.textViewDescription);
         textViewPreasure = (TextView)view.findViewById(R.id.textViewPreasuer);
@@ -100,12 +97,14 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
         imageViewStatus.setImageDrawable(weatherIconDrawable);
 
-        textViewTemp.setText(sharedPreferences.getString("textViewTemp30", ""));
+        textViewTemp3.setText(sharedPreferences.getString("textViewTemp30", ""));
         textViewLocation.setText(sharedPreferences.getString("textViewLocation30", ""));
         textViewDesc.setText(sharedPreferences.getString("textViewDesc30", ""));
         textViewPreasure.setText(sharedPreferences.getString("textViewPreasure30", ""));
         textViewLat.setText(sharedPreferences.getString("textViewLat30", ""));
         textViewLong.setText(sharedPreferences.getString("textViewLong30", ""));
     }
+
+
 
 }

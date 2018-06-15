@@ -5,7 +5,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewTemp"
+        android:id="@+id/textViewTemp3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -17,28 +17,28 @@
         android:id="@+id/textViewPreasuer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewTemp"
-        android:layout_below="@+id/textViewTemp"
+        android:layout_alignStart="@+id/textViewTemp3"
+        android:layout_below="@+id/textViewTemp3"
         android:text="Preasure"
-        android:layout_alignLeft="@+id/textViewTemp" />
+        android:layout_alignLeft="@+id/textViewTemp3" />
 
     <TextView
         android:id="@+id/textViewLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewTemp"
+        android:layout_alignStart="@+id/textViewTemp3"
         android:layout_below="@+id/textViewPreasuer"
         android:text="Location"
-        android:layout_alignLeft="@+id/textViewTemp" />
+        android:layout_alignLeft="@+id/textViewTemp3" />
 
     <TextView
         android:id="@+id/textViewGeoLocLat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewTemp"
+        android:layout_alignStart="@+id/textViewTemp3"
         android:layout_below="@+id/textViewLocationLong"
         android:text="GeoLoc"
-        android:layout_alignLeft="@+id/textViewTemp" />
+        android:layout_alignLeft="@+id/textViewTemp3" />
 
     <ImageView
         android:id="@+id/imageViewStatus"
@@ -53,10 +53,10 @@
         android:id="@+id/textViewLocationLong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewTemp"
+        android:layout_alignStart="@+id/textViewTemp3"
         android:layout_below="@+id/textViewLocation"
         android:text="GeoLong"
-        android:layout_alignLeft="@+id/textViewTemp" />
+        android:layout_alignLeft="@+id/textViewTemp3" />
 
     <TextView
         android:id="@+id/textViewDescription"

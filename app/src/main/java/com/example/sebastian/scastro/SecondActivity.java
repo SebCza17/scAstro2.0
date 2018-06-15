@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.sebastian.scastro.data.Channel;
+import com.example.sebastian.scastro.service.CallbackWeatherService;
+
 /**
  * Created by Sebastian on 16.05.2018.
  */
@@ -50,5 +53,9 @@ public class SecondActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
+
+
+
 }
