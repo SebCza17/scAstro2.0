@@ -80,17 +80,7 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         editor.putString("textViewLong30", item.getLongi().toString());
         editor.commit();
 
-        int resourceID =  sharedPreferences.getInt("imageViewStatus30", 0);
-        Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
-        imageViewStatus.setImageDrawable(weatherIconDrawable);
-
-        textViewTemp.setText(sharedPreferences.getString("textViewTemp30", ""));
-        textViewLocation.setText(sharedPreferences.getString("textViewLocation30", ""));
-        textViewDesc.setText(sharedPreferences.getString("textViewDesc30", ""));
-        textViewPreasure.setText(sharedPreferences.getString("textViewPreasure30", ""));
-        textViewLat.setText(sharedPreferences.getString("textViewLat30", ""));
-        textViewLong.setText(sharedPreferences.getString("textViewLong30", ""));
-
+        refreshWeather();
 
 
 
@@ -100,6 +90,12 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
     @Override
     public void serviceFailure(Exception exception) {
 
+        refreshWeather();
+    }
+
+    @Override
+    public void refreshWeather() {
+
         int resourceID =  sharedPreferences.getInt("imageViewStatus30", 0);
         Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
         imageViewStatus.setImageDrawable(weatherIconDrawable);
@@ -110,7 +106,6 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         textViewPreasure.setText(sharedPreferences.getString("textViewPreasure30", ""));
         textViewLat.setText(sharedPreferences.getString("textViewLat30", ""));
         textViewLong.setText(sharedPreferences.getString("textViewLong30", ""));
-        //dialog.hide();
-        //Toast.makeText(this, exception.getMessage(), Toast.LENGTH_LONG).show();
     }
+
 }

@@ -1,5 +1,7 @@
 package com.example.sebastian.scastro;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,13 +27,15 @@ public class Fragment4 extends Fragment implements CallbackWeatherService {
 
     private YahooWaetherSevice yahooWaetherSevice;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
         View view = inflater.inflate(R.layout.fragment4_layout,container,false);
-
 
         textViewWind = (TextView)view.findViewById(R.id.textViewWind);
         textViewWindDir = (TextView)view.findViewById(R.id.textViewWindDir);
@@ -40,6 +44,9 @@ public class Fragment4 extends Fragment implements CallbackWeatherService {
 
         yahooWaetherSevice = new YahooWaetherSevice(this);
         yahooWaetherSevice.refreshWeather("Lodz, PL");
+
+        sharedPreferences = getActivity().getSharedPreferences("com.example.sebastian.scastro", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
 
         return view;
@@ -51,18 +58,30 @@ public class Fragment4 extends Fragment implements CallbackWeatherService {
         Wind wind = channel.getWind();
         Atmosphere atmosphere = channel.getAtmosphere();
 
+        editor.putString("textViewWind40", wind.getSpeed().toString());
+        editor.putString("textViewWindDir40", wind.getDirection());
+        editor.putString("textViewHumi40", atmosphere.getHumidity());
+        editor.putString("textViewVisibility40", atmosphere.getVisibility());
 
-        textViewWind.setText(wind.getSpeed().toString());
-        textViewWindDir.setText(wind.getDirection());
-        textViewHumi.setText(atmosphere.getHumidity());
-        textViewVisibility.setText(atmosphere.getVisibility());
+        editor.commit();
 
 
+        refreshWeather();
 
     }
 
     @Override
     public void serviceFailure(Exception e) {
 
+        refreshWeather();
+    }
+
+    @Override
+    public void refreshWeather() {
+
+        textViewWind.setText(sharedPreferences.getString("textViewWind40", ""));
+        textViewWindDir.setText(sharedPreferences.getString("textViewWindDir40", ""));
+        textViewVisibility.setText(sharedPreferences.getString("textViewVisibility40", ""));
+        textViewVisibility.setText(sharedPreferences.getString("textViewVisibility40", ""));
     }
 }

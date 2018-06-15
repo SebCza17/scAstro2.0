@@ -1,5 +1,7 @@
 package com.example.sebastian.scastro;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,6 +37,10 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
     private YahooWaetherSevice yahooWaetherSevice;
     private  View view;
 
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,6 +53,9 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
         yahooWaetherSevice = new YahooWaetherSevice(this);
         yahooWaetherSevice.refreshWeather("Lodz, PL");
 
+        sharedPreferences = getActivity().getSharedPreferences("com.example.sebastian.scastro", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
 
         return view;
     }
@@ -58,21 +67,17 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
         for(int i = 0; i < 3; i ++) {
             Forecast forecast = item.getForecast(i+1);
 
-            textViewsDate[i].setText(forecast.getDate());
-            textViewsDay[i].setText(forecast.getDay());
-            textViewsHigh[i].setText(forecast.getHigh());
-            textViewsLow[i].setText(forecast.getLow());
-            textViewsText[i].setText(forecast.getText());
+            editor.putString("textViewsDate5" + i, forecast.getDate());
+            editor.putString("textViewsDay5" + i, forecast.getDay());
+            editor.putString("textViewsHigh5" + i, forecast.getHigh());
+            editor.putString("textViewsLow5" + i, forecast.getLow());
+            editor.putString("textViewsText5" + i, forecast.getText());
 
-            int resourceID = getResources().getIdentifier("drawable/a" + item.getForecast(i+1).getCode(), null, getActivity().getPackageName());
+            editor.commit();
 
-            //@SuppressWarnings("deprecation")
-            Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
-
-            imageViewsCode[i].setImageDrawable(weatherIconDrawable);
         }
 
-
+        refreshWeather();
 
 
 
@@ -80,7 +85,24 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
 
     @Override
     public void serviceFailure(Exception e) {
+        refreshWeather();
+    }
 
+    @Override
+    public void refreshWeather() {
+        for(int i = 0; i < 3; i ++) {
+
+            textViewsDate[i].setText(sharedPreferences.getString("textViewsDate5"+ i, ""));
+            textViewsDay[i].setText(sharedPreferences.getString("textViewsDay5"+ i, ""));
+            textViewsHigh[i].setText(sharedPreferences.getString("textViewsHigh5"+ i, ""));
+            textViewsLow[i].setText(sharedPreferences.getString("textViewsLow5"+ i, ""));
+            textViewsText[i].setText(sharedPreferences.getString("textViewsText5"+ i, ""));
+
+            int resourceID = sharedPreferences.getInt("imageViewStatus30", 0);
+            Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
+
+            imageViewsCode[i].setImageDrawable(weatherIconDrawable);
+        }
     }
 
     private void fillView(){
