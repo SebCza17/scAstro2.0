@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sebastian.scastro.data.Atmosphere;
 import com.example.sebastian.scastro.data.Channel;
@@ -75,6 +76,9 @@ public class Fragment4 extends Fragment implements CallbackWeatherService {
 
     @Override
     public void serviceFailure(Exception e) {
+
+
+        Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_LONG).show();
 
         refreshWeather();
     }

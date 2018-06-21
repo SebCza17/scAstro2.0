@@ -77,6 +77,7 @@ public class YahooWaetherSevice {
                     JSONObject jsonObject1 = jsonObject.optJSONObject("query");
                     int count = jsonObject1.optInt("count");
 
+
                     if(count == 0){
                         callbackWeatherService.serviceFailure(new LocationWeatherException("Wrong Location " + location));
                         return;

@@ -81,7 +81,7 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
         editor.putInt("imageViewStatus30", getResources().getIdentifier("drawable/a" + item.getCondition().getCode(), null, getActivity().getPackageName()));
         editor.putString("textViewTemp30", item.getCondition().getTemp()+" \u00B0"+channel.getUnits().getTemperature());
-        editor.putString("textViewLocation30", yahooWaetherSevice.getLocation());
+        editor.putString("textViewLocation30", channel.getLocation().getCity() + " " + channel.getLocation().getCountry());
         editor.putString("textViewDesc30", item.getCondition().getDescription());
         editor.putString("textViewPreasure30", atmosphere.getPressure().toString()+" \u33D4");
         editor.putString("textViewLat30", item.getLat().toString());
@@ -97,14 +97,13 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
 
 
+
     }
 
     @Override
     public void serviceFailure(Exception exception) {
 
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println(exception);
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+        Toast.makeText(getActivity(),exception.getMessage(),Toast.LENGTH_LONG).show();
 
         refreshWeather();
 

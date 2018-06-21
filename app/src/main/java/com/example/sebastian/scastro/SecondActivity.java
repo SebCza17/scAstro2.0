@@ -63,7 +63,7 @@ public class SecondActivity extends AppCompatActivity {
         spinnerList.add("Warszawa");
 
 
-        int prefsInt = sharedPreferences.getInt("howMuch5", 0);
+        int prefsInt = sharedPreferences.getInt("howMuch6", 0);
         if(prefsInt != 0){
             howMuch = prefsInt;
             for(int i = 0; i < howMuch; i++){
@@ -126,7 +126,7 @@ public class SecondActivity extends AppCompatActivity {
     public void onClickSave(View view) {
         if(!editTextAdd.getText().toString().equals("")) {
             howMuch++;
-            editor.putInt("howMuch5", howMuch);
+            editor.putInt("howMuch6", howMuch);
             editor.putString("wordPlace" + howMuch, editTextAdd.getText().toString());
             editor.commit();
         }
