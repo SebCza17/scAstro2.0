@@ -101,7 +101,6 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/editTextLongitude"
         android:ems="10"
-        android:inputType="textAutoCorrect"
-        android:text="Add City" />
+        android:inputType="textFilter" />
 
 </RelativeLayout>

@@ -58,6 +58,7 @@ public class SecondActivity extends AppCompatActivity {
         spinnerList.add("Lodz");
         spinnerList.add("Warszawa");
 
+
         int prefsInt = sharedPreferences.getInt("howMuch5", 0);
         if(prefsInt != 0){
             howMuch = prefsInt;
@@ -65,6 +66,9 @@ public class SecondActivity extends AppCompatActivity {
                 spinnerList.add(sharedPreferences.getString("wordPlace" + (i+1), ""));
             }
         }
+
+        int prefsInt2 = sharedPreferences.getInt("selectedLocationID", 0);
+
 
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this,
@@ -81,12 +85,15 @@ public class SecondActivity extends AppCompatActivity {
                                        int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
                 editor.putString("selectedLocation", selected);
+                editor.putInt("selectedLocationID", position);
                 editor.commit();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+
+        spinner.setSelection(prefsInt2);
 
     }
 

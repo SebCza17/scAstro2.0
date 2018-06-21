@@ -33,6 +33,7 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
     private TextView textViewPreasure;
     private TextView textViewLat;
     private TextView textViewLong;
+    private TextView textViewError;
 
 
     private YahooWaetherSevice yahooWaetherSevice;
@@ -55,6 +56,8 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         textViewPreasure = (TextView)view.findViewById(R.id.textViewPreasuer);
         textViewLat = (TextView)view.findViewById(R.id.textViewGeoLocLat);
         textViewLong = (TextView)view.findViewById(R.id.textViewLocationLong);
+
+        textViewError = (TextView)view.findViewById(R.id.textViewError);
 
         sharedPreferences = getActivity().getSharedPreferences("config.xml", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -87,6 +90,9 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
         refreshWeather();
 
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println(item.getCondition().getCode());
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
 
 
 
@@ -95,7 +101,12 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
     @Override
     public void serviceFailure(Exception exception) {
 
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println(exception);
+        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+
         refreshWeather();
+
     }
 
     @Override
