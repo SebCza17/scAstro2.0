@@ -20,19 +20,21 @@ import java.net.URLConnection;
 public class YahooWaetherSevice {
     private  CallbackWeatherService callbackWeatherService;
     private String location;
+    private String typeU;
     private Exception exception;
 
     public YahooWaetherSevice(CallbackWeatherService callbackWeatherService) {
         this.callbackWeatherService = callbackWeatherService;
     }
 
-    public void refreshWeather(final String loc){
+    public void refreshWeather(final String loc, final String type){
         this.location = loc;
+        this.typeU = type;
         new AsyncTask<String, Void, String>() {
             @Override
             protected String doInBackground(String... strings) {
 
-                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u =\"c\"", strings[0]);
+                String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u =\"%s\"", strings[0], strings[1]);
                 String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", Uri.encode(YQL));
 
                 try {
@@ -88,7 +90,7 @@ public class YahooWaetherSevice {
                     callbackWeatherService.serviceFailure(e);
                 }
             }
-        }.execute(location);
+        }.execute(location, typeU);
     }
 
 

@@ -63,9 +63,10 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         editor = sharedPreferences.edit();
 
         String location = sharedPreferences.getString("selectedLocation", "lodz");
+        String type = sharedPreferences.getString("typeU", "c");
 
         yahooWaetherSevice = new YahooWaetherSevice(this);
-        yahooWaetherSevice.refreshWeather(location);
+        yahooWaetherSevice.refreshWeather(location, type);
 
         return view;
     }

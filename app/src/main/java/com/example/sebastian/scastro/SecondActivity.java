@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.sebastian.scastro.data.Channel;
@@ -35,6 +37,7 @@ public class SecondActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private List<String> spinnerList = new ArrayList<>();
     private int howMuch = 0;
+    private Switch aSwitch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class SecondActivity extends AppCompatActivity {
         editTextRe.setText("" + MainActivity.refreshTime/1000);
 
         spinner = (Spinner) findViewById(R.id.spinner);
+        aSwitch = (Switch) findViewById(R.id.switch1);
 
         spinnerList.add("Lodz");
         spinnerList.add("Warszawa");
@@ -94,6 +98,26 @@ public class SecondActivity extends AppCompatActivity {
         });
 
         spinner.setSelection(prefsInt2);
+
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if(b){
+                    editor.putString("typeU", "c");
+
+                }else{
+                    editor.putString("typeU", "f");
+                }
+                editor.commit();
+            }
+        });
+
+        String type = sharedPreferences.getString("typeU", "c");
+        if(type.equals("c"))
+            aSwitch.setChecked(true);
+        else
+            aSwitch.setChecked(false);
 
     }
 
