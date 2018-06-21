@@ -2,6 +2,7 @@ package com.example.sebastian.scastro;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,28 +12,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sebastian.scastro.data.Atmosphere;
 import com.example.sebastian.scastro.data.Channel;
 import com.example.sebastian.scastro.data.Item;
+import com.example.sebastian.scastro.databinding.Fragment1LayoutBinding;
 import com.example.sebastian.scastro.service.CallbackWeatherService;
 import com.example.sebastian.scastro.service.YahooWaetherSevice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fragment3 extends Fragment implements CallbackWeatherService {
+
+    private ImageView imageViewStatus;
+    private TextView textViewTemp3;
+    private TextView textViewLocation;
+    private TextView textViewDesc;
+    private TextView textViewPreasure;
+    private TextView textViewLat;
+    private TextView textViewLong;
+
 
     private YahooWaetherSevice yahooWaetherSevice;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-
-    public ImageView imageViewStatus;
-    public TextView textViewTemp3;
-    public TextView textViewLocation;
-    public TextView textViewDesc;
-    public TextView textViewPreasure;
-    public TextView textViewLat;
-    public TextView textViewLong;
-
 
 
     @Nullable
@@ -43,19 +49,20 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         View view = (View) inflater.inflate(R.layout.fragment3_layout,container,false);
 
         imageViewStatus = (ImageView)view.findViewById(R.id.imageViewStatus);
-        textViewTemp3 = (TextView)view.findViewById(R.id.textViewTemp3);
+        textViewTemp3 = (TextView)view.findViewById(R.id.textViewTemp);
         textViewLocation = (TextView)view.findViewById(R.id.textViewLocation);
         textViewDesc = (TextView)view.findViewById(R.id.textViewDescription);
         textViewPreasure = (TextView)view.findViewById(R.id.textViewPreasuer);
         textViewLat = (TextView)view.findViewById(R.id.textViewGeoLocLat);
         textViewLong = (TextView)view.findViewById(R.id.textViewLocationLong);
 
-        sharedPreferences = getActivity().getSharedPreferences("com.example.sebastian.scastro", Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("config.xml", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
+        String location = sharedPreferences.getString("selectedLocation", "lodz");
 
         yahooWaetherSevice = new YahooWaetherSevice(this);
-        yahooWaetherSevice.refreshWeather("Lodz, PL");
+        yahooWaetherSevice.refreshWeather(location);
 
         return view;
     }
@@ -75,6 +82,7 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         editor.putString("textViewPreasure30", atmosphere.getPressure().toString()+" \u33D4");
         editor.putString("textViewLat30", item.getLat().toString());
         editor.putString("textViewLong30", item.getLongi().toString());
+
         editor.commit();
 
         refreshWeather();
@@ -104,7 +112,5 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         textViewLat.setText(sharedPreferences.getString("textViewLat30", ""));
         textViewLong.setText(sharedPreferences.getString("textViewLong30", ""));
     }
-
-
 
 }

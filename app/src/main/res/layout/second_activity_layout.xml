@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
@@ -84,5 +86,22 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:text="Refresh" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true" />
+
+    <EditText
+        android:id="@+id/editTextAdd"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editTextLongitude"
+        android:ems="10"
+        android:inputType="textAutoCorrect"
+        android:text="Add City" />
 
 </RelativeLayout>

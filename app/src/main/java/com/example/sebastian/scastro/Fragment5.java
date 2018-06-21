@@ -50,11 +50,15 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
 
         fillView();
 
-        yahooWaetherSevice = new YahooWaetherSevice(this);
-        yahooWaetherSevice.refreshWeather("Lodz, PL");
 
-        sharedPreferences = getActivity().getSharedPreferences("com.example.sebastian.scastro", Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("config.xml", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
+        String location = sharedPreferences.getString("selectedLocation", "lodz");
+
+        yahooWaetherSevice = new YahooWaetherSevice(this);
+        yahooWaetherSevice.refreshWeather(location);
+
 
 
         return view;
@@ -69,9 +73,10 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
 
             editor.putString("textViewsDate5" + i, forecast.getDate());
             editor.putString("textViewsDay5" + i, forecast.getDay());
-            editor.putString("textViewsHigh5" + i, forecast.getHigh());
-            editor.putString("textViewsLow5" + i, forecast.getLow());
+            editor.putString("textViewsHigh5" + i, forecast.getHigh()+" \u00B0"+channel.getUnits().getTemperature());
+            editor.putString("textViewsLow5" + i, forecast.getLow()+" \u00B0"+channel.getUnits().getTemperature());
             editor.putString("textViewsText5" + i, forecast.getText());
+            editor.putInt("imageViewStatus5" + i, getResources().getIdentifier("drawable/a" + forecast.getCode(), null, getActivity().getPackageName()));
 
             editor.commit();
 
@@ -98,7 +103,7 @@ public class Fragment5 extends Fragment implements CallbackWeatherService {
             textViewsLow[i].setText(sharedPreferences.getString("textViewsLow5"+ i, ""));
             textViewsText[i].setText(sharedPreferences.getString("textViewsText5"+ i, ""));
 
-            int resourceID = sharedPreferences.getInt("imageViewStatus30", 0);
+            int resourceID = sharedPreferences.getInt("imageViewStatus5" + i, 44);
             Drawable weatherIconDrawable = getResources().getDrawable(resourceID);
 
             imageViewsCode[i].setImageDrawable(weatherIconDrawable);

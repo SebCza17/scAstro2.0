@@ -35,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewTemp;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

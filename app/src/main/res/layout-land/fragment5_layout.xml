@@ -3,47 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="Next Day"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/textViewTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Next Day"
+        android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/imageViewCode1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textViewDate1"
-            app:srcCompat="@drawable/a44" />
+    <ImageView
+        android:id="@+id/imageViewCode1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewDate1"
+        app:srcCompat="@drawable/a44" />
 
-        <TextView
-            android:id="@+id/textViewDate1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textViewTest"
-            android:text="Date" />
+    <TextView
+        android:id="@+id/textViewDate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewTest"
+        android:text="Date" />
 
-        <TextView
-            android:id="@+id/textViewDay1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/imageViewCode1"
-            android:layout_marginStart="85dp"
-            android:text="Day" />
+    <TextView
+        android:id="@+id/textViewDay1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/imageViewCode1"
+        android:layout_marginStart="85dp"
+        android:text="Day" />
 
-        <TextView
-            android:id="@+id/textViewHigh1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textViewDay1"
-            android:layout_below="@+id/textViewDay1"
-            android:text="High" />
+    <TextView
+        android:id="@+id/textViewHigh1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewDay1"
+        android:layout_below="@+id/textViewDay1"
+        android:text="High" />
 
     <TextView
         android:id="@+id/textViewLow1"
@@ -67,7 +67,7 @@
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imageViewCode1"
-        android:layout_marginEnd="65dp"
+        android:layout_marginEnd="68dp"
         app:srcCompat="@drawable/a44" />
 
     <TextView
@@ -78,29 +78,29 @@
         android:layout_below="@+id/textViewTest"
         android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textViewDay2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/imageViewCode1"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imageViewCode1"
+        android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textViewHigh2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/textViewDay2"
-            android:layout_below="@+id/textViewDay1"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewHigh2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewDay2"
+        android:layout_below="@+id/textViewDay1"
+        android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textViewLow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/textViewHigh1"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewLow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textViewHigh1"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewText2"
@@ -122,14 +122,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageViewCode3"
-        android:layout_toEndOf="@+id/textViewDay1"
+        android:layout_alignStart="@+id/imageViewCode3"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewDay3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageViewCode3"
+        android:layout_above="@+id/textViewHigh3"
         android:layout_toEndOf="@+id/imageViewCode3"
         android:text="TextView" />
 
@@ -137,7 +137,7 @@
         android:id="@+id/textViewHigh3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewDay3"
+        android:layout_above="@+id/textViewLow3"
         android:layout_toEndOf="@+id/imageViewCode3"
         android:text="TextView" />
 
@@ -145,7 +145,7 @@
         android:id="@+id/textViewLow3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewHigh3"
+        android:layout_alignBottom="@+id/imageViewCode3"
         android:layout_toEndOf="@+id/imageViewCode3"
         android:text="TextView" />
 
@@ -153,8 +153,8 @@
         android:id="@+id/textViewText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageViewCode3"
         android:layout_below="@+id/imageViewCode3"
-        android:layout_toEndOf="@+id/textViewDay1"
         android:text="TextView" />
 
 
