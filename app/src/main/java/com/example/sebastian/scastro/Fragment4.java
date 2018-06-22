@@ -80,6 +80,7 @@ public class Fragment4 extends Fragment implements CallbackWeatherService {
 
         Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_LONG).show();
 
+
         refreshWeather();
     }
 

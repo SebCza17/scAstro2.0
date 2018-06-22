@@ -79,7 +79,8 @@ public class YahooWaetherSevice {
 
 
                     if(count == 0){
-                        callbackWeatherService.serviceFailure(new LocationWeatherException("Wrong Location " + location));
+                        callbackWeatherService.serviceFailure(new LocationWeatherException("Bledna Lokacja"));
+
                         return;
                     }
 

@@ -66,8 +66,17 @@ public class SecondActivity extends AppCompatActivity {
         int prefsInt = sharedPreferences.getInt("howMuch6", 0);
         if(prefsInt != 0){
             howMuch = prefsInt;
+
             for(int i = 0; i < howMuch; i++){
-                spinnerList.add(sharedPreferences.getString("wordPlace" + (i+1), ""));
+                String test = sharedPreferences.getString("wordPlace" + (i+1), "");
+                if(!test.equals("")) {
+                    spinnerList.add(sharedPreferences.getString("wordPlace" + (i + 1), ""));
+                    System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+                    System.out.println(test);
+                    System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
+
+
+                }
             }
         }
 

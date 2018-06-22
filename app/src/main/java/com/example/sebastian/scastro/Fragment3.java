@@ -35,6 +35,9 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
     private TextView textViewLong;
     private TextView textViewError;
 
+    private int selectedID;
+    private String selectedLoc;
+
 
     private YahooWaetherSevice yahooWaetherSevice;
 
@@ -62,11 +65,12 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
         sharedPreferences = getActivity().getSharedPreferences("config.xml", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        String location = sharedPreferences.getString("selectedLocation", "lodz");
+        selectedLoc = sharedPreferences.getString("selectedLocation", "lodz");
+        selectedID = sharedPreferences.getInt("selectedLocationID", 0);
         String type = sharedPreferences.getString("typeU", "c");
 
         yahooWaetherSevice = new YahooWaetherSevice(this);
-        yahooWaetherSevice.refreshWeather(location, type);
+        yahooWaetherSevice.refreshWeather(selectedLoc, type);
 
         return view;
     }
@@ -91,10 +95,6 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
 
         refreshWeather();
 
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println(item.getCondition().getCode());
-        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------");
-
 
 
 
@@ -104,7 +104,9 @@ public class Fragment3 extends Fragment implements CallbackWeatherService {
     public void serviceFailure(Exception exception) {
 
         Toast.makeText(getActivity(),exception.getMessage(),Toast.LENGTH_LONG).show();
+        if(exception.getMessage().equals("Bledna Lokacja")) {
 
+        }
         refreshWeather();
 
     }
